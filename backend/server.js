@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes/index")
 
 const app = express();
 const Port = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ mongoose
   });
 
 //routes configuration
+app.use("/auth", authRoutes);
 
 app.use((err, req, res, next) => {
   console.log(err.stack);
