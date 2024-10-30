@@ -9,8 +9,11 @@ export default function AuthProvider({ children }) {
   const [signInFormData, setSignInFormData] = useState(initialSignInFormData);
   const [signUpFormData, setSignUpFormData] = useState(initialSignUpFormData);
 
-  async function handleRegisterUser() {
+  async function handleRegisterUser(e) {
+    e.preventDefault();
     const data = await registerService(signUpFormData);
+
+    console.log(data);
   }
 
   return (
@@ -20,6 +23,7 @@ export default function AuthProvider({ children }) {
         setSignInFormData,
         signUpFormData,
         setSignUpFormData,
+        handleRegisterUser,
       }}
     >
       {children}
